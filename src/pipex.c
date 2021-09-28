@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 19:59:26 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/27 20:18:03 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/27 22:48:23 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	second_command(char **argv, char **envp, int *fd)
 	char	**command;
 	int		out;
 
-	command = ft_split(argv[3], ' ');
+	command = check_arguments(argv[3]);
 	out = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (out == -1)
 		throw_error("Unable to open file!");
@@ -64,7 +64,7 @@ static void	first_command(char **argv, char **envp, int *fd)
 	char	**command;
 	int		in;
 
-	command = ft_split(argv[2], ' ');
+	command = check_arguments(argv[2]);
 	in = open(argv[1], O_RDONLY, 0777);
 	if (in == -1)
 		throw_error("Unable to open file!");
